@@ -1,0 +1,908 @@
+{
+  "regions": [
+    {
+      "region_id": "SONGWE",
+      "region_name": "Songwe",
+      "in_scope": true,
+      "roster_status": "CONFIRMED",
+      "scope_note": "Six project schools with a full 2025 accessibility baseline. The Sogea ESRAC is the first of the three centres to be equipped.",
+      "councils": "Tunduma, Ileje and Momba"
+    },
+    {
+      "region_id": "RUKWA",
+      "region_name": "Rukwa",
+      "in_scope": true,
+      "roster_status": "CONFIRMED",
+      "scope_note": "Six project schools with a full 2025 accessibility baseline. Matai A is designated to receive the region's ESRAC equipment.",
+      "councils": "Kalambo, Sumbawanga MC and Sumbawanga DC"
+    },
+    {
+      "region_id": "KATAVI",
+      "region_name": "Katavi",
+      "in_scope": true,
+      "roster_status": "CONFIRMED",
+      "scope_note": "Six project schools with a full 2025 accessibility baseline. Maji Moto is designated to receive the region's ESRAC equipment.",
+      "councils": "Mpanda, Mpimbwe and Nsimbo"
+    },
+    {
+      "region_id": "MBEYA",
+      "region_name": "Mbeya",
+      "in_scope": false,
+      "roster_status": "UNCONFIRMED",
+      "scope_note": "Not a region of delivery. The proposal names Mbeya, but the 2025 accessibility audit, the Q1 2025 QNR and the BMZ interim report all give Songwe, Rukwa and Katavi, and no project school sits in Mbeya. Retained only so the discrepancy stays visible.",
+      "councils": ""
+    }
+  ],
+  "schools": [
+    {
+      "school_id": "KAT-SCH01",
+      "region_id": "KATAVI",
+      "school_name": "Katisunga Primary School",
+      "name_variant": "",
+      "council": "Nsimbo District Council",
+      "ward": "Machimboni Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 1072,
+      "learners_with_disabilities": 24,
+      "disability_categories": "HI 6; PI 7; LV 10; MI 1",
+      "audit_headline": "Major physical accessibility gaps",
+      "audit_baseline": "One two-classroom building and administration block had worn corridors/ramps; two buildings lacked corridors/ramps; no contrasting strips/signage; no handrails around hazardous areas, especially new WASH buildings; no disability-friendly toilets.",
+      "planned_modification": "Resurface existing corridors/ramps; construct accessible corridors/ramps for two buildings; contrasting/tactile strips and signage; continuous handrails; construct accessible toilets for both genders with grab bars, seated WCs, accessible basins and signage.",
+      "assessment_focus": "Re-test corridors, ramps, signage, handrails and toilets",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Classrooms / corridors",
+          "recommendation": "Resurface worn corridors/ramps; construct accessible corridors/ramps in two buildings; install continuous handrails."
+        },
+        {
+          "area": "Signage / visual access",
+          "recommendation": "Install 0.60m contrasting/textured strips at ramp ends and clear/tactile signage adjacent to doorways."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Construct disability-friendly toilets for both genders with turning space, grab bars, seated WCs, accessible basins and tactile signage."
+        }
+      ]
+    },
+    {
+      "school_id": "KAT-SCH02",
+      "region_id": "KATAVI",
+      "school_name": "Mnyaki Primary School",
+      "name_variant": "",
+      "council": "Nsimbo District Council",
+      "ward": "Katumba Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 1454,
+      "learners_with_disabilities": 35,
+      "disability_categories": "HI 3; PI 14; LV 12; II 6",
+      "audit_headline": "Major physical accessibility gaps",
+      "audit_baseline": "Some ramps reached about 20% slope and lacked handrails; two buildings lacked corridors/ramps; no contrasting strips/signage; no handrails around hazardous areas; disability toilets had inadequate space, barriers and non-functioning WCs.",
+      "planned_modification": "Reconstruct ramps to accessible slope with handrails; accessible corridors/ramps for two old buildings; contrasting strips/signage; secure handrails; rehabilitate disability toilets with adequate turning space, grab bars, accessible WCs, basins and signage.",
+      "assessment_focus": "Re-test ramps, corridors, toilets and safety features",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Ramps / circulation",
+          "recommendation": "Reconstruct steep ramps to accessible slope; provide sturdy handrails; construct accessible corridors/ramps for two old buildings."
+        },
+        {
+          "area": "Signage / visual access",
+          "recommendation": "Install 0.60m contrasting/textured strips and tactile/Braille signage."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Rehabilitate disability toilets with 1.5m turning space, grab bars, accessible seated WCs, basins and signage."
+        }
+      ]
+    },
+    {
+      "school_id": "KAT-SCH03",
+      "region_id": "KATAVI",
+      "school_name": "Nyerere Primary School",
+      "name_variant": "Ward spelled 'Kawajense' in the region checklist and 'Kiwajense' in the 2025 audit",
+      "council": "Mpanda Municipal Council",
+      "ward": "Kiwajense Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 2141,
+      "learners_with_disabilities": 48,
+      "disability_categories": "HI 3; PI 12; LV 3; II 18; MI 12",
+      "audit_headline": "Steep/deteriorated ramps; worn floors; poor accessible toilets",
+      "audit_baseline": "Ramps/stairs were deteriorated and steep (up to 20%); high door thresholds; no contrasting strips/signage or handrails; old classrooms had potholes/corrugation; two accessible toilets were in poor condition and lacked support handles.",
+      "planned_modification": "Reconstruct/retrofit ramps; curb ramps at thresholds; contrasting strips/signage; continuous handrails; resurface old classroom floors; rehabilitate accessible toilets, add grab bars, functional seated WCs, accessible basins and signage.",
+      "assessment_focus": "Re-test circulation, floors, toilets and usability",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Ramps / circulation",
+          "recommendation": "Reconstruct/retrofit ramps to max 1:12; provide continuous handrails; address high thresholds with curb ramps."
+        },
+        {
+          "area": "Classrooms / floors",
+          "recommendation": "Repair and resurface old classroom floors to remove potholes and uneven/corrugated surfaces."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Rehabilitate two accessible toilets; add grab bars, functional seated WCs, accessible basins and tactile signage."
+        }
+      ]
+    },
+    {
+      "school_id": "KAT-SCH04",
+      "region_id": "KATAVI",
+      "school_name": "Azimio Primary School",
+      "name_variant": "",
+      "council": "Mpanda Municipal Council",
+      "ward": "Majengo Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 586,
+      "learners_with_disabilities": 43,
+      "disability_categories": "HI 37; PI 3; LV 2; TB 1",
+      "audit_headline": "Major building/corridor and toilet gaps",
+      "audit_baseline": "Three buildings lacked corridors/ramps; five buildings were dilapidated with potholes; two classroom corridors were worn; no accessible footpath to dormitory; disability toilets had non-functional WCs and were dilapidated.",
+      "planned_modification": "Construct accessible corridors/ramps (handrails on higher buildings); contrasting strips/signage; rehabilitate five dilapidated buildings and two worn corridors; improve accessible footpath to dormitory; replace non-functional disability WCs and improve finishing.",
+      "assessment_focus": "Re-test five buildings, corridors, dormitory access and toilets",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Buildings / corridors",
+          "recommendation": "Construct accessible corridors/ramps for the affected buildings; fit handrails where height requires; rehabilitate five dilapidated buildings."
+        },
+        {
+          "area": "Pathways / circulation",
+          "recommendation": "Repair worn corridors and provide an accessible footpath to the dormitory."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Replace non-functional WCs in the two disability toilets and ensure accessible finishing and support features."
+        }
+      ]
+    },
+    {
+      "school_id": "KAT-SCH05",
+      "region_id": "KATAVI",
+      "school_name": "Maji Moto Primary School",
+      "name_variant": "Recorded as 'Majimoto Maalum' in CST reporting",
+      "council": "Mpimbwe District Council",
+      "ward": "Maji Moto Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 50,
+      "learners_with_disabilities": 50,
+      "disability_categories": "HI 18; PI 10; LV 5; TB 4; II 13",
+      "audit_headline": "Approx. 95% aligned with inclusive design; remaining handrail/washbasin gaps",
+      "audit_baseline": "School was assessed as approximately 95% aligned with inclusive design; remaining gaps were handrails along long corridors/ramps and accessible toilet washing sinks/handrails.",
+      "planned_modification": "Install sturdy continuous handrails along long corridors/ramps; install toilet-landing handrails; replace/modify washbasins for wheelchair access.",
+      "assessment_focus": "Verify remaining gaps and whether accessibility is functional, safe and maintained in practice",
+      "priority": "Medium",
+      "retest_areas": [
+        {
+          "area": "Corridors / ramps",
+          "recommendation": "Install sturdy, continuous handrails along long corridors and ramps."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Install handrails at toilet landings and replace/modify washbasins for wheelchair access."
+        }
+      ]
+    },
+    {
+      "school_id": "KAT-SCH06",
+      "region_id": "KATAVI",
+      "school_name": "Kilida Primary School",
+      "name_variant": "",
+      "council": "Mpimbwe District Council",
+      "ward": "Mamba Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 1206,
+      "learners_with_disabilities": 11,
+      "disability_categories": "HI 2; PI 4; LV 2; II 3",
+      "audit_headline": "Major ramp, threshold, signage and toilet gaps",
+      "audit_baseline": "New buildings had steep/high ramps and gaps in handrails; old buildings lacked ramps; high door thresholds; no contrasting strips/signage; no handrails at hazardous areas; toilets were squat type, lacked accessible signage, had non-accessible basins and lacked accessible ramps.",
+      "planned_modification": "Reconstruct steep ramps to preferably 1:12; provide ramps at all old-building entrances with continuous handrails; curb ramps at thresholds; contrasting strips/signage; construct accessible toilets with turning space, grab bars, seated WCs, accessible basins and tactile signage.",
+      "assessment_focus": "Re-test ramps, thresholds, signage and toilets",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Ramps / circulation",
+          "recommendation": "Reconstruct steep ramps to preferably 1:12; construct ramps at old buildings with continuous handrails."
+        },
+        {
+          "area": "Thresholds / visual access",
+          "recommendation": "Install curb ramps at thresholds; 0.60m contrasting/textured strips; clear/tactile signage adjacent to doorways."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Replace squat toilets with accessible seated toilets; provide turning space, grab bars, accessible basins, tactile signage and accessible ramps."
+        }
+      ]
+    },
+    {
+      "school_id": "RUK-SCH01",
+      "region_id": "RUKWA",
+      "school_name": "Laela B Primary School",
+      "name_variant": "Recorded as 'Laela Primary School' in the 2025 accessibility audit",
+      "council": "Sumbawanga District Council",
+      "ward": "Kasanzama Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 1845,
+      "learners_with_disabilities": 33,
+      "disability_categories": "II 11; PI 6; LV 7; HI 9",
+      "audit_headline": "Missing corridors/ramps, dilapidated buildings and non-functional disability WCs",
+      "audit_baseline": "3 buildings lacked corridors/ramps; high thresholds; 3 buildings dilapidated; 2 classes incomplete; disability toilets had non-functional WCs.",
+      "planned_modification": "Accessible corridors/ramps; contrasting strips/signage; renovate dilapidated buildings/complete classrooms; replace non-functional WCs.",
+      "assessment_focus": "Re-test corridors, ramps, building condition and toilets",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Classrooms / corridors",
+          "recommendation": "Construct accessible corridors/ramps; renovate dilapidated buildings; complete classrooms."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Replace non-functional WCs and ensure disability-friendly toilet access."
+        }
+      ]
+    },
+    {
+      "school_id": "RUK-SCH02",
+      "region_id": "RUKWA",
+      "school_name": "Kizwite Primary School",
+      "name_variant": "",
+      "council": "Sumbawanga Municipal Council",
+      "ward": "Kizwite Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 2245,
+      "learners_with_disabilities": 130,
+      "disability_categories": "II 91; PI 2; HI 37",
+      "audit_headline": "Steep ramps without handrails; hazardous high foundation areas",
+      "audit_baseline": "Ramps around 90:400 were too steep and lacked handrails; no contrasting strips/signage; hazardous/high foundation areas; disability toilets existed but lacked handrails.",
+      "planned_modification": "Ramps at proper gradient with handrails; contrasting strips/signage; toilet handrails.",
+      "assessment_focus": "Re-test ramp gradients, handrails, signage and toilet support features",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Ramps / circulation",
+          "recommendation": "Proper gradients and handrails; contrasting strips and signage."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Install protective support handrails in disability toilets."
+        }
+      ]
+    },
+    {
+      "school_id": "RUK-SCH03",
+      "region_id": "RUKWA",
+      "school_name": "Matai A Primary School",
+      "name_variant": "'Matai A' in CST reporting and the region checklist; the 2025 audit uses 'Matai Primary School' in its narrative and 'Matai “B”' in its demographic table",
+      "council": "Kalambo District Council",
+      "ward": "Matai Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 817,
+      "learners_with_disabilities": 25,
+      "disability_categories": "II 19; MI 2; HI 4",
+      "audit_headline": "Six buildings without proper ramps/corridors; dilapidated classrooms",
+      "audit_baseline": "One improper ramp and no ramps/corridors for the other buildings; six buildings affected; no contrasting strips/signage; dilapidated classrooms/potholes; audit noted need for accessible toilets.",
+      "planned_modification": "Accessible corridors/ramps; contrasting strips/signage; renovate dilapidated buildings; construct accessible toilets.",
+      "assessment_focus": "Re-test corridors, ramps, classroom condition and accessible toilets",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Buildings / circulation",
+          "recommendation": "Construct corridors and ramps; address dilapidated buildings and potholes."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Construct accessible toilets with grab bars and accessible sinks."
+        }
+      ]
+    },
+    {
+      "school_id": "RUK-SCH04",
+      "region_id": "RUKWA",
+      "school_name": "Msanzi A Primary School",
+      "name_variant": "",
+      "council": "Kalambo District Council",
+      "ward": "Msanzi Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 706,
+      "learners_with_disabilities": 20,
+      "disability_categories": "II 6; LV 2; PI 8; II 6 (as printed)",
+      "audit_headline": "Old buildings in a road reserve; no disability-friendly toilets",
+      "audit_baseline": "Old buildings were in a road reserve/right-of-way and lacked accessible features; new buildings lacked protection/signage/contrasting strips; no disability-friendly toilets.",
+      "planned_modification": "Phase out old buildings and replace with accessible structures; contrasting strips/signage; toilet handrails; accessible toilets with grab bars/sinks.",
+      "assessment_focus": "Verify replacement structures, signage and accessible toilets",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Buildings / circulation",
+          "recommendation": "Phase out old inaccessible structures where required; provide accessible replacement structures."
+        },
+        {
+          "area": "Toilets / signage",
+          "recommendation": "Accessible toilets, handrails, contrasting strips and signage."
+        }
+      ]
+    },
+    {
+      "school_id": "RUK-SCH05",
+      "region_id": "RUKWA",
+      "school_name": "Malangali Primary School",
+      "name_variant": "",
+      "council": "Sumbawanga Municipal Council",
+      "ward": "Malangala Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 105,
+      "learners_with_disabilities": 100,
+      "disability_categories": "MI 7; PI 4; LV 58; TB 31",
+      "audit_headline": "No proper main entry; severely worn corridors; inaccessible toilets",
+      "audit_baseline": "No proper main entry; corridors severely worn with potholes/uneven surfaces; inaccessible toilets; disrepair in WC/squat toilets.",
+      "planned_modification": "Proper main entry; renovate/resurface corridors; contrasting strips/signage; toilet handrails; replace non-functional WCs/squat toilets.",
+      "assessment_focus": "Re-test main entry, corridor surfaces and toilet functionality",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Main entry / corridors",
+          "recommendation": "Proper main entry; renovate/resurface corridors; remove uneven surfaces."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Install handrails and replace non-functional WC/squat toilets."
+        }
+      ]
+    },
+    {
+      "school_id": "RUK-SCH06",
+      "region_id": "RUKWA",
+      "school_name": "Mukamanye Primary School",
+      "name_variant": "Recorded as 'Mukanye' in the kick-off materials",
+      "council": "Sumbawanga District Council",
+      "ward": "Muze Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 1195,
+      "learners_with_disabilities": 35,
+      "disability_categories": "HI 5; PI 12; LV 3; II 15",
+      "audit_headline": "No accessible corridors/ramps; valley adjacent to premises creates a safety risk",
+      "audit_baseline": "No accessible corridors/ramps in three buildings; narrow doorways; incomplete building; valley near premises creating safety risk, particularly for children with low vision; no disability-friendly toilets.",
+      "planned_modification": "Accessible corridors/ramps; protective fencing/safe walkways around valley; contrasting strips/signage; renovate/complete buildings; accessible toilets with grab bars/sinks.",
+      "assessment_focus": "Re-test corridors, doorway widths, valley safety measures and toilets",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Buildings / corridors",
+          "recommendation": "Construct accessible corridors/ramps; complete unfinished classrooms; accessible doors."
+        },
+        {
+          "area": "Safety / pathways",
+          "recommendation": "Protect valley and provide safe walkways, especially for children with low vision."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Construct accessible toilets with grab bars and accessible sinks."
+        }
+      ]
+    },
+    {
+      "school_id": "SON-SCH01",
+      "region_id": "SONGWE",
+      "school_name": "Ilulu Primary School",
+      "name_variant": "",
+      "council": "Ileje District Council",
+      "ward": "Isongole Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 389,
+      "learners_with_disabilities": 19,
+      "disability_categories": "II 9; PI 5; LV 5",
+      "audit_headline": "Steep ramp without handrails; no accessible toilet design; deteriorated ramps",
+      "audit_baseline": "One improperly constructed ramp (too steep) and no handrails; no 0.60m contrasting/textured strips at ramp ends; no signage on doorframes or adjoining walls; no handrails around hazardous areas, stairs and ramps. Toilet cubicles under 1.5m with no turning space, no grab bars, squat toilets only, no tactile or Braille signage, basins too high with no knee clearance, and existing ramps largely deteriorated.",
+      "planned_modification": "Construct or retrofit ramps to a gradient not exceeding 1:12 with dual-height handrails at 80cm; 0.60m contrasting textured strips at both ramp ends; durable contrasting signage adjacent to doorways; continuous child-friendly handrails extending 30cm beyond start and end. Construct disability-friendly toilets for both genders with 1.5m turning space, 900mm doorways, grab bars at 800–850mm, one seated WC per gender, tactile/Braille signage at 1400mm, and basins at 650–700mm with 680mm knee clearance.",
+      "assessment_focus": "Re-test ramp gradient and handrails, signage, and the accessible toilet build",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Ramps / circulation",
+          "recommendation": "Construct or retrofit ramps to a gradient not exceeding 1:12 with handrails on both sides at dual heights (80cm); continuous handrails extending 30cm beyond the start and end of every ramp and stair."
+        },
+        {
+          "area": "Signage / visual access",
+          "recommendation": "Install 0.60m contrasting and textured strips at both ends of all ramps; provide durable contrasting signage adjacent to doorways rather than on the doors."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Construct disability-friendly toilets for both genders: 1.5m turning space, 900mm outward-opening doors, grab bars at 800–850mm, one seated WC per gender, tactile/Braille signage, basins at 650–700mm with 680mm knee clearance. Reconstruct the deteriorated ramps at 1:12, minimum 1.2m wide, non-slip."
+        }
+      ]
+    },
+    {
+      "school_id": "SON-SCH02",
+      "region_id": "SONGWE",
+      "school_name": "Msia Primary School",
+      "name_variant": "Carried as 'Nsia' in earlier project documentation",
+      "council": "Ileje District Council",
+      "ward": "Chitete Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 662,
+      "learners_with_disabilities": 17,
+      "disability_categories": "II 4; PI 7; LV 5; HI 1",
+      "audit_headline": "Steep and deteriorated ramps; no formalised footpaths; squat toilets only",
+      "audit_baseline": "Ramps poorly designed and too steep at several points (85 rise : 220 run) with no supporting handrails; two other ramps at appropriate slope but deteriorated. No tactile or contrasting colour strips (0.60m) at ramp ends. Signage not positioned on adjacent walls or doorframes. No protective handrails around dangerous areas, specifically corridors where two buildings stand 50–80cm high. No formalised footpaths anywhere on the premises. Squat toilets only.",
+      "planned_modification": "Construct and retrofit ramps at a gradient not exceeding 1:12 with dual-height handrails at 80cm, built parallel to the corridor rather than perpendicular given the 50–85cm building height; 0.60m contrasting textured strips; contrasting signage adjacent to doorways; continuous handrails on both sides of stairs and ramps and one side of the corridor. Construct accessible toilets for both genders to the standard turning space, grab bar, seated WC, signage and basin specification.",
+      "assessment_focus": "Re-test ramp geometry against the recorded 85:220 rise-to-run, corridor handrails and toilet provision",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Ramps / corridors",
+          "recommendation": "Retrofit ramps to a maximum 1:12 gradient with dual-height handrails at 80cm, constructed parallel to the corridor because two buildings stand only 50–85cm high; continuous handrails on both sides of stairs and ramps and one side of the corridor."
+        },
+        {
+          "area": "Footpaths / signage",
+          "recommendation": "Formalise footpaths across the school premises; install 0.60m contrasting textured strips at ramp ends and contrasting signage adjacent to doorways."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Construct accessible toilets for both genders: 1.5m turning space, 900mm doors, grab bars at 800–850mm, one seated WC per gender, tactile/Braille signage, basins at 650–700mm. Reconstruct ramps at 1:12, minimum 1.5m wide, non-slip."
+        }
+      ]
+    },
+    {
+      "school_id": "SON-SCH03",
+      "region_id": "SONGWE",
+      "school_name": "Sogea Primary School",
+      "name_variant": "",
+      "council": "Tunduma District Council",
+      "ward": "Sogea Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 1882,
+      "learners_with_disabilities": 30,
+      "disability_categories": "II 9; PI 5; LV 12; HI 2",
+      "audit_headline": "Steep ramps in two buildings; four incomplete classrooms; high door thresholds",
+      "audit_baseline": "Improperly constructed ramps (60 rise : 195 run) in two buildings, too steep and without handrails. Four classes incomplete with many floor potholes preventing wheelchair manoeuvrability. High thresholds at doorways in one building. No 0.60m contrasting textured strips at any ramp. No signage on doorframes or adjoining walls. No handrails around hazardous areas, stairs, ramps or corridors. Toilet cubicles too narrow with no 1.5m turning space; squat toilets only.",
+      "planned_modification": "Upgrade ramps to no steeper than 1:12 with dual-height handrails at 80cm; complete the four classrooms (plaster, paint, doors and windows) and repair all floor surfaces; install curb ramps at high thresholds; 0.60m contrasting textured strips; contrasting signage beside doorways; continuous handrails extending 30cm beyond every slope and staircase. Construct accessible toilets to the standard specification.",
+      "assessment_focus": "Re-test ramps, classroom completion and floor condition, thresholds and the ESRAC room",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Ramps / circulation",
+          "recommendation": "Upgrade ramps to a gradient no steeper than 1:12 with dual-height handrails at 80cm; install curb ramps at high door thresholds with contrasting markings; continuous handrails extending 30cm beyond each slope and staircase."
+        },
+        {
+          "area": "Classrooms / floors",
+          "recommendation": "Complete the four unfinished classrooms — plaster, paint, doors and windows — and repair all floor surfaces to a smooth, level, firm finish for wheelchair users."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Construct toilet cubicles with 1.5m turning space and 900mm doorways, grab bars at 800–850mm, one seated WC per gender, tactile/Braille signage at 1400mm, basins at 650–700mm; ramps at 1:12, minimum 1.2m wide."
+        },
+        {
+          "area": "ESRAC facility",
+          "recommendation": "Verify the ESRAC room renovation, the installed equipment against the procurement record, and whether assessment services are actually running."
+        }
+      ]
+    },
+    {
+      "school_id": "SON-SCH04",
+      "region_id": "SONGWE",
+      "school_name": "Chiwezi Primary School",
+      "name_variant": "Carried as 'Chiyezi' in earlier project documentation",
+      "council": "Tunduma District Council",
+      "ward": "Chiwezi Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 557,
+      "learners_with_disabilities": 14,
+      "disability_categories": "II 3; PI 3; LV 2; MI 6",
+      "audit_headline": "Corridors only 1100mm wide; two buildings without corridors; no disability toilets at all",
+      "audit_baseline": "Existing corridors only 1100mm wide, insufficient for wheelchair access, and two buildings lack corridors entirely. Two classroom buildings have floors with potholes; one building of three classes is entirely incomplete. No 0.60m contrasting textured strips at ramp ends. No signage on doorframes or adjoining walls. No disability-friendly toilets for either gender, and existing toilets have no ramps at all.",
+      "planned_modification": "Widen existing corridors to a minimum of 1500mm and construct new covered accessible corridors in the two buildings without them, with firm non-slip surfaces and turning spaces every 20 metres; rehabilitate classroom floors and complete the unfinished three-class building; 0.60m contrasting textured strips; contrasting signage adjacent to doorways. Construct disability-friendly toilets for both genders to the standard specification.",
+      "assessment_focus": "Measure corridor widths against the 1500mm standard; verify the incomplete building and toilet construction",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Corridors / circulation",
+          "recommendation": "Widen corridors to a minimum of 1500mm and construct new covered accessible corridors in the two buildings that lack them, with firm non-slip surfaces and turning spaces every 20 metres."
+        },
+        {
+          "area": "Classrooms / floors",
+          "recommendation": "Repair all classroom floor potholes to a smooth, level, non-slip finish and complete the unfinished three-class building to basic accessibility and safety standards."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Construct disability-friendly toilets for both genders with 1.5m turning space, 900mm doors, grab bars, one seated WC per gender, tactile signage and accessible basins, plus the missing access ramps."
+        }
+      ]
+    },
+    {
+      "school_id": "SON-SCH05",
+      "region_id": "SONGWE",
+      "school_name": "Ndalambo Primary School",
+      "name_variant": "",
+      "council": "Momba District Council",
+      "ward": "Ndalambo Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 1222,
+      "learners_with_disabilities": 54,
+      "disability_categories": "II 21; PI 12; LV 10; HI 11",
+      "audit_headline": "None of the five buildings have corridors or ramps; inadequate classroom lighting; dilapidated classrooms",
+      "audit_baseline": "None of the five buildings have corridors or ramps, making classroom access difficult for wheelchair users. No 0.60m contrasting textured strips at ramp ends. No signage on doorframes or adjoining walls. All classrooms have inadequate lighting from small windows (120x100cm) and doors of only about 80cm. Most classrooms are dilapidated and pose safety risks. The two toilets for pupils with disabilities are in poor condition, never refurbished, missing support handrails, and their doors are only 80cm wide.",
+      "planned_modification": "Construct corridors and accessible ramps at a preferred 1500mm width and maximum 1:12 slope, without handrails since average building height is 40cm; 0.60m contrasting textured strips; tactile signage on doorframes or adjacent walls; enlarge windows to at least 150x150cm and widen doors to at least 900mm; renovate the five dilapidated buildings. Renovate the disability toilets with Western-type WCs and support handrails at 850mm, and replace doors with 900mm minimum width.",
+      "assessment_focus": "Re-test corridor and ramp construction across all five buildings, window and door sizing, and toilet refurbishment",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Corridors / ramps",
+          "recommendation": "Construct corridors and accessible ramps at 1500mm preferred width and a maximum 1:12 slope across all five buildings; handrails are not required as average building height is 40cm."
+        },
+        {
+          "area": "Classroom lighting & doors",
+          "recommendation": "Enlarge windows to at least 150x150cm for natural lighting and widen doors to at least 900mm; renovate the five dilapidated buildings to structural safety and accessibility standards."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Renovate the two disability-designated toilets with durable accessible designs, new Western-type WCs and support handrails at 850mm on both sides; replace the 80cm doors with minimum 900mm doors."
+        }
+      ]
+    },
+    {
+      "school_id": "SON-SCH06",
+      "region_id": "SONGWE",
+      "school_name": "Kitete Primary School",
+      "name_variant": "",
+      "council": "Momba District Council",
+      "ward": "Chitete Ward",
+      "roster_status": "CONFIRMED",
+      "pupils": 1100,
+      "learners_with_disabilities": 29,
+      "disability_categories": "II 10; PI 10; LV 4; HI 5",
+      "audit_headline": "Ramp at 20:120; no corridors or ramps on five buildings; four dilapidated buildings; no disability toilets",
+      "audit_baseline": "Improperly constructed ramps, too steep at 20 rise : 120 run. None of the five buildings have corridors or ramps. No 0.60m contrasting textured strips at ramp ends. No signage on doorframes or adjoining walls. Most classrooms dilapidated and posing safety risks. No disability-friendly toilets for either gender, and the existing squat toilets are incomplete and unfinished.",
+      "planned_modification": "Construct or retrofit ramps at a gradient not exceeding 1:12 with dual-height handrails at 80cm; construct corridors and accessible ramps at 1500mm preferred width and 1:12 maximum slope, without handrails given the 40cm average building height; 0.60m contrasting textured strips; contrasting signage adjacent to doorways; renovate the four dilapidated buildings. Construct disability-friendly toilets for both genders to the standard specification.",
+      "assessment_focus": "Re-test ramp gradients, corridor construction, building renovation and toilet completion",
+      "priority": "High",
+      "retest_areas": [
+        {
+          "area": "Ramps / corridors",
+          "recommendation": "Retrofit the 20:120 ramp to a maximum 1:12 gradient with dual-height handrails; construct corridors and accessible ramps at 1500mm width across the five buildings that lack them."
+        },
+        {
+          "area": "Buildings / signage",
+          "recommendation": "Renovate the four dilapidated buildings to structural safety and accessibility standards; install 0.60m contrasting textured strips and contrasting signage adjacent to doorways."
+        },
+        {
+          "area": "Toilets",
+          "recommendation": "Construct disability-friendly toilets for both genders with 1.5m turning space, 900mm doors, grab bars, one seated WC per gender, tactile signage and accessible basins; complete and finish the existing squat toilets."
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "result_id": "R1",
+      "result_name": "Result 1 – Access, assessment, referral & placement",
+      "intent": "Children with disabilities have improved access to government schools under the project.",
+      "indicators": "Children identified/assessed; referrals/rehabilitation; children accessing inclusive education; enrolment/completion/transition; assistive devices; learning ability change; assessors trained and practicing.",
+      "project_target": "PPA contains project-wide indicators; exact annual/regional allocations should be taken from the latest MEL/workplan.",
+      "check_in_field": "Trace children from identification → assessment → referral → assistive device/rehab → school placement → attendance/enrolment. Verify whether services are timely and actually usable.",
+      "evidence_to_request": ""
+    },
+    {
+      "result_id": "R2",
+      "result_name": "Result 2 – Quality inclusive teaching & learning",
+      "intent": "Improve equitable and quality learning outcomes for children with disabilities in target government schools.",
+      "indicators": "IE kits/curriculum developed and used; teachers trained; teachers adapt practice; schools modified; children feel accepted/supported; inclusive learning materials available.",
+      "project_target": "360 teachers in PPA; confirm current target/workplan.",
+      "check_in_field": "Observe lessons; review IEPs and lesson plans; check inclusive materials; interview teachers and learners; verify mentoring and follow-up.",
+      "evidence_to_request": ""
+    },
+    {
+      "result_id": "R3",
+      "result_name": "Result 3 – Community engagement",
+      "intent": "Improved community awareness and engagement to prevent dropout and support inclusive education.",
+      "indicators": "KAP/attitude change; mobilized community members; parent/caregiver engagement with government; OPD joint advocacy; child abuse reporting; PSG activity and IGA support.",
+      "project_target": "Kick-off materials reference a 1m community awareness goal; PPA lists 2m community members. Reconcile before scoring.",
+      "check_in_field": "Determine whether awareness changed behaviour, not only whether meetings occurred. Check active PSGs, CRCs, OPD participation and evidence of advocacy.",
+      "evidence_to_request": ""
+    },
+    {
+      "result_id": "R4",
+      "result_name": "Result 4 – Assessment/referral systems & accessibility",
+      "intent": "Improved assessment, referral and placement systems and accessible school environments.",
+      "indicators": "Children assessed through ESRAC/mobile services; ESRACs equipped; assessment/placement procedures improved; 18 schools modified; children enrolled after modifications.",
+      "project_target": "18 project schools; 3 ESRACs; exact annual targets to confirm.",
+      "check_in_field": "Verify whether modifications followed the accessibility audit and are usable in practice. Re-test ramps, toilets, paths, doors, signage and safety features.",
+      "evidence_to_request": ""
+    },
+    {
+      "result_id": "R5",
+      "result_name": "Result 5 – Government engagement & financing",
+      "intent": "Increased government engagement and commitment to inclusive education and ESRAC financing.",
+      "indicators": "Advocacy meetings leading to change; annual district school observations; schools receiving government budget support; officials implementing plans aligned to national policy.",
+      "project_target": "Annual meetings/observations; budget allocations; district implementation plans.",
+      "check_in_field": "Look for decisions and resource commitments, not attendance only. Verify budget lines, official plans, inspection visits and follow-up actions.",
+      "evidence_to_request": ""
+    },
+    {
+      "result_id": "XC",
+      "result_name": "Cross-cutting – Safeguarding, inclusion & participation",
+      "intent": "Children and persons with disabilities participate safely and meaningfully.",
+      "indicators": "Disability inclusion; child protection/safeguarding; participation of children, parents and OPDs; accessible communication; complaints/referrals.",
+      "project_target": "Project activities include safeguarding training and inclusive child protection.",
+      "check_in_field": "Check whether children can speak safely; whether complaints/referral pathways are known and functioning; whether OPDs participate beyond attendance.",
+      "evidence_to_request": ""
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "FV-01",
+      "result_id": "R1",
+      "area": "Child assessment",
+      "question": "Are all children identified/assessed through the project actually recorded and traceable?",
+      "planned_standard": "R1 indicator – children identified and assessed"
+    },
+    {
+      "question_id": "FV-02",
+      "result_id": "R1",
+      "area": "Referral/rehabilitation",
+      "question": "Are children needing referral receiving appropriate referral and rehabilitation services?",
+      "planned_standard": "R1 indicator – referral and rehabilitation"
+    },
+    {
+      "question_id": "FV-03",
+      "result_id": "R1",
+      "area": "Assistive devices",
+      "question": "Are assistive devices provided to eligible children and are they suitable, functional and used?",
+      "planned_standard": "R1 indicator – assistive devices"
+    },
+    {
+      "question_id": "FV-04",
+      "result_id": "R1",
+      "area": "Enrolment/transition",
+      "question": "Has access/enrolment/completion/transition improved for children with disabilities?",
+      "planned_standard": "R1 indicators – access, enrolment, completion and transition"
+    },
+    {
+      "question_id": "FV-05",
+      "result_id": "R1",
+      "area": "IEP / learning",
+      "question": "Do IEPs and assessment results influence lesson planning and learning support?",
+      "planned_standard": "R1 indicator – change in ability to learn"
+    },
+    {
+      "question_id": "FV-06",
+      "result_id": "R1",
+      "area": "Assessors",
+      "question": "Are trained assessors practicing the Child-to-Child approach and using IE Assessment Kits?",
+      "planned_standard": "R1 indicator – trained/practicing assessors"
+    },
+    {
+      "question_id": "FV-07",
+      "result_id": "R2",
+      "area": "Teacher training",
+      "question": "Were planned teachers trained, and can they demonstrate what they learned?",
+      "planned_standard": "360 project-wide in PPA – confirm current target"
+    },
+    {
+      "question_id": "FV-08",
+      "result_id": "R2",
+      "area": "Classroom practice",
+      "question": "Does observation show child-centred/inclusive teaching, adaptation and participation of learners with disabilities?",
+      "planned_standard": "Quality inclusive education"
+    },
+    {
+      "question_id": "FV-09",
+      "result_id": "R2",
+      "area": "Teaching materials",
+      "question": "Are inclusive teaching/learning materials available, accessible and actually used?",
+      "planned_standard": "Improved availability of inclusive materials"
+    },
+    {
+      "question_id": "FV-10",
+      "result_id": "R2",
+      "area": "Mentoring",
+      "question": "Did mentoring/classroom observation occur and lead to changes in practice?",
+      "planned_standard": "Mentoring activity in PPA"
+    },
+    {
+      "question_id": "FV-11",
+      "result_id": "R3",
+      "area": "PSG",
+      "question": "Are Parents Support Groups formed, active and meeting quarterly?",
+      "planned_standard": "PSG activity – quarterly meetings/training"
+    },
+    {
+      "question_id": "FV-12",
+      "result_id": "R3",
+      "area": "PSG livelihoods",
+      "question": "Did PSG members receive livelihood training/start-up support and is it helping children access education?",
+      "planned_standard": "PSG IGA activity"
+    },
+    {
+      "question_id": "FV-13",
+      "result_id": "R3",
+      "area": "CRC",
+      "question": "Are Child Rights Clubs functioning with monthly meetings and annual training?",
+      "planned_standard": "CRC activity"
+    },
+    {
+      "question_id": "FV-14",
+      "result_id": "R3",
+      "area": "OPDs",
+      "question": "Are OPDs actively involved in advocacy/resource mobilisation rather than only attending events?",
+      "planned_standard": "OPD engagement activity"
+    },
+    {
+      "question_id": "FV-15",
+      "result_id": "R3",
+      "area": "KAP",
+      "question": "Is there evidence of change in community attitudes, practices and acceptance?",
+      "planned_standard": "KAP indicator"
+    },
+    {
+      "question_id": "FV-16",
+      "result_id": "R4",
+      "area": "Accessibility modification",
+      "question": "For this school, were the 2025 audit recommendations implemented?",
+      "planned_standard": "18 schools project-wide; 6 schools per assessed region"
+    },
+    {
+      "question_id": "FV-17",
+      "result_id": "R4",
+      "area": "Accessibility usability",
+      "question": "Can a child with a mobility/visual disability actually use the modified route independently and safely?",
+      "planned_standard": "Universal Design / CBM accessibility requirements"
+    },
+    {
+      "question_id": "FV-18",
+      "result_id": "R4",
+      "area": "ESRAC",
+      "question": "Is the relevant ESRAC equipped and operational, and are assessment/placement procedures functioning?",
+      "planned_standard": "3 ESRACs project-wide"
+    },
+    {
+      "question_id": "FV-19",
+      "result_id": "R5",
+      "area": "Government visits",
+      "question": "Are district/national officials conducting school observations as planned?",
+      "planned_standard": "Annual/semi-annual observation activity"
+    },
+    {
+      "question_id": "FV-20",
+      "result_id": "R5",
+      "area": "Government financing",
+      "question": "Is there evidence that government budgets or plans now support inclusive education/ESRACs?",
+      "planned_standard": "Budget/commitment indicators"
+    },
+    {
+      "question_id": "FV-21",
+      "result_id": "XC",
+      "area": "Safeguarding",
+      "question": "Do staff, children and parents know the safeguarding/complaints/referral pathway?",
+      "planned_standard": "Safeguarding activity"
+    },
+    {
+      "question_id": "FV-22",
+      "result_id": "XC",
+      "area": "Participation",
+      "question": "Do children, parents and OPDs participate meaningfully rather than only attending?",
+      "planned_standard": "Inclusive participation / accessible communication"
+    }
+  ],
+  "evidenceStreams": [
+    {
+      "stream_id": "DOC",
+      "stream_name": "Documentation",
+      "detail": "Proposal, workplan, logframe, registers, progress and audit reports."
+    },
+    {
+      "stream_id": "FIELD",
+      "stream_name": "Field evidence",
+      "detail": "Physical inspection, geo-tagged photos, asset counts, accessibility measurements."
+    },
+    {
+      "stream_id": "TESTIMONY",
+      "stream_name": "Stakeholder testimony",
+      "detail": "Interviews, child-friendly FGDs, community corroboration."
+    },
+    {
+      "stream_id": "FINANCIAL",
+      "stream_name": "Financial records",
+      "detail": "External audit findings and expenditure cross-checks."
+    }
+  ],
+  "reconciliation": [
+    {
+      "item_id": "RC-01",
+      "issue": "Children with disabilities target",
+      "source_a": "PPA: 2,880",
+      "source_b": "Kick-off presentation: 20,500 (11,274 male + 9,224 female)",
+      "why_it_matters": "A major difference changes the denominator and achievement calculation.",
+      "required_action": "Obtain latest approved MEL/results framework and confirm which figure applies to the assessment period."
+    },
+    {
+      "item_id": "RC-02",
+      "issue": "Children without disabilities target",
+      "source_a": "PPA: 14,400",
+      "source_b": "Kick-off presentation: 10,250 (5,638 male + 4,612 female)",
+      "why_it_matters": "Different target population totals.",
+      "required_action": "Reconcile against latest approved target matrix."
+    },
+    {
+      "item_id": "RC-03",
+      "issue": "Teachers target",
+      "source_a": "PPA: 360 primary teachers",
+      "source_b": "Kick-off presentation: 270 school teachers plus other categories",
+      "why_it_matters": "Could affect training achievement percentage.",
+      "required_action": "Confirm whether 360 is project-wide and how other trained categories are counted."
+    },
+    {
+      "item_id": "RC-04",
+      "issue": "Community reach",
+      "source_a": "PPA: 2,000,000 community members",
+      "source_b": "Kick-off: 1,800,000 indirect beneficiaries; project goal says 1 million awareness/engagement",
+      "why_it_matters": "Different definitions may be being used.",
+      "required_action": "Clarify whether these are population/indirect beneficiaries vs intended people reached/engaged."
+    },
+    {
+      "item_id": "RC-05",
+      "issue": "Rukwa school naming",
+      "source_a": "Kick-off: Mukanye, Laela B, Matai A, Msanzi A",
+      "source_b": "Accessibility audit: Mukamanye, Laela, Matai A, Msanzi A",
+      "why_it_matters": "Could create duplicate/missing school records.",
+      "required_action": "Confirm official school names/codes with CST and district authorities."
+    },
+    {
+      "item_id": "RC-06",
+      "issue": "Assessment timing",
+      "source_a": "Project runs to Dec 2027",
+      "source_b": "External assessment is being conducted before project end",
+      "why_it_matters": "Endline-style conclusions may be premature.",
+      "required_action": "Use 'achievement to date' unless the TOR defines a specific completed phase."
+    },
+    {
+      "item_id": "RC-07",
+      "issue": "Regions of delivery",
+      "source_a": "The REET proposal names Mbeya, Songwe and Katavi",
+      "source_b": "The 2025 accessibility audit, the Q1 2025 QNR and the BMZ narrative interim report all name Songwe, Rukwa and Katavi, and all 18 project schools sit in those three regions",
+      "why_it_matters": "Field itinerary, budget and school coverage all depend on which regions are in scope.",
+      "required_action": "Evidence is one-sided: three CST/CBM documents agree on Songwe, Rukwa and Katavi. Treat the proposal's reference to Mbeya as a drafting error, confirm in writing with CBM at inception, and correct the itinerary and budget accordingly."
+    },
+    {
+      "item_id": "RC-08",
+      "issue": "School name variants across sources",
+      "source_a": "CST reporting and the region checklists use Msia, Chiwezi, Matai A, Laela B, Mukamanye, Majimoto Maalum",
+      "source_b": "Earlier documentation carried Nsia and Chiyezi; the 2025 audit's demographic table uses 'Matai “B”' while its narrative uses 'Matai'; the Nyerere ward appears as both Kawajense and Kiwajense",
+      "why_it_matters": "Variant names create duplicate or missing school records and break the link between an audit finding and the school it belongs to.",
+      "required_action": "Confirm the official school names, codes and wards with CST and the district authorities, and record one controlling name per school."
+    },
+    {
+      "item_id": "RC-09",
+      "issue": "Disability category counts that do not reconcile",
+      "source_a": "2025 accessibility audit Table 01 states a total number of children with disabilities per school",
+      "source_b": "For Sogea the categories sum to 28 against a stated 30; for Msanzi A the categories list 'II' twice and sum to 22 against a stated 20",
+      "why_it_matters": "The category breakdown is the basis for judging whether support reaches the right children; if it does not sum, neither figure can be relied on.",
+      "required_action": "Reconcile both schools' category breakdowns against the school register and the ESRAC assessment records during fieldwork."
+    },
+    {
+      "item_id": "RC-10",
+      "issue": "Schools where nearly every pupil has a disability",
+      "source_a": "Malangali records 100 children with disabilities out of 105 pupils; Maji Moto records 50 of 50",
+      "source_b": "Project targets are written around inclusive settings mixing children with and without disabilities",
+      "why_it_matters": "If these are special or resource schools rather than inclusive schools, per-school achievement denominators and the inclusion logic differ.",
+      "required_action": "Establish each school's official designation and decide how it is counted before calculating inclusion or enrolment achievement."
+    },
+    {
+      "item_id": "RC-11",
+      "issue": "Number of schools to be physically modified",
+      "source_a": "PPA and kick-off materials: 18 schools modified, and the 2025 audit assessed all 18",
+      "source_b": "Q1 2025 QNR: renovations are being prepared for ten selected schools, chosen against a selection criterion",
+      "why_it_matters": "Eight schools may receive no physical modification at all. Achievement against the 18-school accessibility indicator cannot be judged until this is settled.",
+      "required_action": "Obtain the selection criterion and the list of the ten schools, establish what is planned for the other eight, and confirm whether the target was formally revised with CBM."
+    },
+    {
+      "item_id": "RC-12",
+      "issue": "Teacher population being trained and mentored",
+      "source_a": "A01.02 reports 91 teachers trained (5 per school); PPA target is 360 primary teachers",
+      "source_b": "A01.07 reports mentoring for 270 teachers across the 18 schools; the kick-off presentation cites 270 school teachers",
+      "why_it_matters": "Training achievement is being reported against at least three different denominators.",
+      "required_action": "Establish which population each indicator counts and whether the 91, the 270 and the 360 are cumulative, overlapping or separate."
+    }
+  ]
+}
