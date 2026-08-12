@@ -36,9 +36,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # CorsMiddleware must be first so preflight OPTIONS always get ACAO headers.
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -114,10 +115,23 @@ CORS_ALLOWED_ORIGINS = env_list(
     "https://assess.nileagi.com,http://localhost:3087,http://127.0.0.1:3087",
 )
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"]
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+CORS_PREFLIGHT_MAX_AGE = 86400
 
 CSRF_TRUSTED_ORIGINS = env_list(
     "CSRF_TRUSTED_ORIGINS",
-    "https://assess.nileagi.com,https://api.assess.nileagi.com",
+    "https://assess.nileagi.com,https://api.assess.nileagi.com,http://localhost:3087,http://127.0.0.1:3087",
 )
 
 FRONTEND_URL = os.getenv("FRONTEND_URL", "https://assess.nileagi.com")

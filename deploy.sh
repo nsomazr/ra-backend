@@ -8,6 +8,7 @@
 #   USE_SQLITE=1
 #   ALLOWED_HOSTS=api.assess.nileagi.com,localhost,127.0.0.1
 #   CORS_ALLOWED_ORIGINS=https://assess.nileagi.com
+#   CSRF_TRUSTED_ORIGINS=https://assess.nileagi.com,https://api.assess.nileagi.com
 set -euo pipefail
 cd "$(dirname "$0")"
 

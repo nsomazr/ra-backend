@@ -25,6 +25,24 @@ Seeded by `python manage.py seed_framework` (also run from `./start.sh` / `./dep
 
 Sign in from the frontend at `/login.html` — admins are routed to `/admin.html`.
 
+## CORS (production)
+
+The API must allow the frontend origin. In production `.env`:
+
+```bash
+CORS_ALLOWED_ORIGINS=https://assess.nileagi.com
+CSRF_TRUSTED_ORIGINS=https://assess.nileagi.com,https://api.assess.nileagi.com
+ALLOWED_HOSTS=api.assess.nileagi.com,localhost,127.0.0.1
+```
+
+Then redeploy:
+
+```bash
+./deploy.sh
+```
+
+If login shows “Failed to fetch”, the reverse proxy for `api.assess.nileagi.com` must forward `OPTIONS` preflight to gunicorn (port 8087), not answer it itself without CORS headers.
+
 ## Local
 
 ```bash
