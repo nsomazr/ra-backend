@@ -37,9 +37,16 @@ Seeded by `python manage.py seed_framework` (also run from `./start.sh` / `./dep
 
 Sign in from the frontend at `/login.html` — admins are routed to `/admin.html`.
 
-## CORS (production)
+## Production notes
 
-The API must allow the frontend origin. In production `.env`:
+Frontend and API are separate services:
+
+| Host | Process | Port |
+| --- | --- | --- |
+| https://assess.nileagi.com | `assess-frontend` (Node) | 3087 |
+| https://api.assess.nileagi.com | `assess-backend` (gunicorn) | 8087 |
+
+CORS must allow the frontend origin:
 
 ```bash
 CORS_ALLOWED_ORIGINS=https://assess.nileagi.com
@@ -47,40 +54,11 @@ CSRF_TRUSTED_ORIGINS=https://assess.nileagi.com,https://api.assess.nileagi.com
 ALLOWED_HOSTS=api.assess.nileagi.com,localhost,127.0.0.1
 ```
 
-Then redeploy:
+If the API process is down, nginx returns 502 and the browser may show a connection error on login — start/redeploy the API:
 
 ```bash
-./deploy.sh
-```
-
-If login shows “Failed to fetch”, the reverse proxy for `api.assess.nileagi.com` must forward `OPTIONS` preflight to gunicorn (port 8087), not answer it itself without CORS headers.
-
-## Nginx (api.assess.nileagi.com → :8087)
-
-```nginx
-server {
-    listen 443 ssl http2;
-    server_name api.assess.nileagi.com;
-
-    location / {
-        proxy_pass http://127.0.0.1:8087;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header Authorization $http_authorization;
-        proxy_pass_header Authorization;
-    }
-}
-```
-
-A browser CORS error with **no** `Access-Control-Allow-Origin` often means nginx returned **502** because gunicorn/pm2 is not running:
-
-```bash
-cd /path/to/ra-backend
 ./deploy.sh
 pm2 status assess-backend
-curl -i http://127.0.0.1:8087/api/health/
 ```
 
 ## Local
