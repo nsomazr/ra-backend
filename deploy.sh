@@ -31,24 +31,31 @@ python manage.py seed_framework
 python manage.py collectstatic --no-input
 
 PORT="${BACKEND_PORT:-${PORT:-8087}}"
-WORKERS="${GUNICORN_WORKERS:-3}"
-GUNICORN="$(pwd)/.venv/bin/gunicorn"
 PM2_NAME="${PM2_APP_NAME:-assess-backend}"
 
-pm2 delete "$PM2_NAME" 2>/dev/null || true
-pm2 start "$GUNICORN" \
-  --name "$PM2_NAME" \
-  --cwd "$(pwd)" \
-  --update-env \
-  -- config.wsgi:application \
-  --bind "0.0.0.0:${PORT}" \
-  --workers "$WORKERS" \
-  --timeout 120 \
-  --access-logfile - \
-  --error-logfile -
+if [ ! -x .venv/bin/gunicorn ]; then
+  echo "Error: .venv/bin/gunicorn missing — pip install failed?"
+  exit 1
+fi
 
+# Use ecosystem so interpreter:none is set (bare `pm2 start gunicorn` crash-loops).
+pm2 delete "$PM2_NAME" 2>/dev/null || true
+pm2 start ecosystem.config.cjs --update-env
 pm2 save
-sleep 1
-curl -sf "http://127.0.0.1:${PORT}/api/health/" >/dev/null && echo "Backend OK on :${PORT}" || echo "Warning: health check failed — see: pm2 logs ${PM2_NAME}"
+
+ok=0
+for _ in 1 2 3 4 5 6 7 8; do
+  sleep 1
+  if curl -sf "http://127.0.0.1:${PORT}/api/health/" >/dev/null; then
+    ok=1
+    break
+  fi
+done
+
+if [ "$ok" -eq 1 ]; then
+  echo "Backend OK on :${PORT}"
+else
+  echo "Warning: health check failed — see: pm2 logs ${PM2_NAME} --lines 80"
+fi
 pm2 status "$PM2_NAME"
 echo "Public URL: https://api.assess.nileagi.com → 127.0.0.1:${PORT}"
