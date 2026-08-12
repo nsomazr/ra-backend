@@ -43,6 +43,34 @@ Then redeploy:
 
 If login shows “Failed to fetch”, the reverse proxy for `api.assess.nileagi.com` must forward `OPTIONS` preflight to gunicorn (port 8087), not answer it itself without CORS headers.
 
+## Nginx (api.assess.nileagi.com → :8087)
+
+```nginx
+server {
+    listen 443 ssl http2;
+    server_name api.assess.nileagi.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:8087;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Authorization $http_authorization;
+        proxy_pass_header Authorization;
+    }
+}
+```
+
+A browser CORS error with **no** `Access-Control-Allow-Origin` often means nginx returned **502** because gunicorn/pm2 is not running:
+
+```bash
+cd /path/to/ra-backend
+./deploy.sh
+pm2 status assess-backend
+curl -i http://127.0.0.1:8087/api/health/
+```
+
 ## Local
 
 ```bash
