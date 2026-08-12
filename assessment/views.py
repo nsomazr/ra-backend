@@ -4,6 +4,8 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from accounts.permissions import IsNotViewer
+
 from .models import (
     AuditLog,
     ConsentRecord,
@@ -89,6 +91,7 @@ class ReconciliationViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ReconciliationItem.objects.select_related("resolution").all()
     serializer_class = ReconciliationItemSerializer
     lookup_field = "item_id"
+    permission_classes = [permissions.IsAuthenticated, IsNotViewer]
 
     @action(detail=True, methods=["patch"])
     def resolve(self, request, item_id=None):
@@ -113,6 +116,7 @@ class ReconciliationViewSet(viewsets.ReadOnlyModelViewSet):
 class SchoolReportViewSet(viewsets.ModelViewSet):
     queryset = SchoolReport.objects.select_related("school", "school__region").all()
     lookup_field = "report_id"
+    permission_classes = [permissions.IsAuthenticated, IsNotViewer]
 
     def get_serializer_class(self):
         if self.action == "list":
@@ -176,12 +180,14 @@ class ProgrammeWorkbookViewSet(viewsets.ModelViewSet):
     serializer_class = ProgrammeWorkbookSerializer
     lookup_field = "region_id"
     http_method_names = ["get", "put", "patch", "head", "options"]
+    permission_classes = [permissions.IsAuthenticated, IsNotViewer]
 
 
 class ConsentRecordViewSet(viewsets.ModelViewSet):
     queryset = ConsentRecord.objects.select_related("school", "report").all()
     serializer_class = ConsentRecordSerializer
     lookup_field = "consent_id"
+    permission_classes = [permissions.IsAuthenticated, IsNotViewer]
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -198,6 +204,7 @@ class EvidenceFileViewSet(viewsets.ModelViewSet):
     queryset = EvidenceFile.objects.select_related("report").all()
     serializer_class = EvidenceFileSerializer
     lookup_field = "evidence_id"
+    permission_classes = [permissions.IsAuthenticated, IsNotViewer]
 
     def perform_create(self, serializer):
         serializer.save(uploader=self.request.user)
@@ -216,6 +223,8 @@ class EvidenceFileViewSet(viewsets.ModelViewSet):
 
 
 class ProjectSettingsView(APIView):
+    permission_classes = [permissions.IsAuthenticated, IsNotViewer]
+
     def get(self, request):
         obj, _ = ProjectSettings.objects.get_or_create(id=1)
         return Response(ProjectSettingsSerializer(obj).data)

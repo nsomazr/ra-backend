@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 
 from django.conf import settings
@@ -167,5 +168,45 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS(f"Updated bootstrap admin '{username}'"))
             else:
                 self.stdout.write(f"Bootstrap admin '{username}' already exists")
+
+        # View-only CBM account
+        viewer_username = os.getenv("BOOTSTRAP_VIEWER_USERNAME", "viewer")
+        viewer_password = os.getenv("BOOTSTRAP_VIEWER_PASSWORD", "ViewOnly123!")
+        viewer, viewer_created = User.objects.get_or_create(
+            username=viewer_username,
+            defaults={
+                "full_name": "CBM Viewer",
+                "role": User.Role.CBM_VIEWER,
+                "is_staff": False,
+                "is_superuser": False,
+                "must_change_password": False,
+                "active": True,
+            },
+        )
+        if viewer_created:
+            viewer.set_password(viewer_password)
+            viewer.save()
+            self.stdout.write(self.style.SUCCESS(f"Created view-only user '{viewer_username}'"))
+        else:
+            changed = False
+            if viewer.role != User.Role.CBM_VIEWER:
+                viewer.role = User.Role.CBM_VIEWER
+                changed = True
+            if viewer.is_staff or viewer.is_superuser:
+                viewer.is_staff = False
+                viewer.is_superuser = False
+                changed = True
+            if viewer_password:
+                viewer.set_password(viewer_password)
+                viewer.must_change_password = False
+                changed = True
+            if not viewer.active:
+                viewer.active = True
+                changed = True
+            if changed:
+                viewer.save()
+                self.stdout.write(self.style.SUCCESS(f"Updated view-only user '{viewer_username}'"))
+            else:
+                self.stdout.write(f"View-only user '{viewer_username}' already exists")
 
         self.stdout.write(self.style.SUCCESS("Seed complete"))

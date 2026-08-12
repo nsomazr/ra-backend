@@ -14,11 +14,23 @@ Django REST Framework API for the P10354 field assessment system.
 | Password | `ChangeMeNow!` |
 | Role | System Administrator (`ADMIN`) |
 
+## View-only login
+
+| | |
+| --- | --- |
+| Username | `viewer` |
+| Password | `ViewOnly123!` |
+| Role | CBM Viewer (`CBM_VIEWER`) |
+
+Viewers can browse dashboard/reports/framework data but **cannot** create, edit, submit, or change settings. Enforced in the API (`IsNotViewer`) and in the UI (view-only banner + disabled controls).
+
 Configured in `.env`:
 
 ```bash
 BOOTSTRAP_ADMIN_USERNAME=Angel
 BOOTSTRAP_ADMIN_PASSWORD=ChangeMeNow!
+BOOTSTRAP_VIEWER_USERNAME=viewer
+BOOTSTRAP_VIEWER_PASSWORD=ViewOnly123!
 ```
 
 Seeded by `python manage.py seed_framework` (also run from `./start.sh` / `./deploy.sh`).
