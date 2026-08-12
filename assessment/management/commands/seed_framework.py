@@ -133,7 +133,8 @@ class Command(BaseCommand):
                 "role": User.Role.ADMIN,
                 "is_staff": True,
                 "is_superuser": True,
-                "must_change_password": True,
+                # When an explicit bootstrap password is provided, allow immediate use.
+                "must_change_password": not bool(password),
                 "active": True,
             },
         )
@@ -145,6 +146,26 @@ class Command(BaseCommand):
             user.save()
             self.stdout.write(self.style.SUCCESS(f"Created bootstrap admin '{username}'"))
         else:
-            self.stdout.write(f"Bootstrap admin '{username}' already exists")
+            changed = False
+            if password and not user.has_usable_password():
+                user.set_password(password)
+                changed = True
+            if not user.is_staff or not user.is_superuser or user.role != User.Role.ADMIN:
+                user.is_staff = True
+                user.is_superuser = True
+                user.role = User.Role.ADMIN
+                changed = True
+            # Local/dev: if password is configured, don't block on first login.
+            if password and user.must_change_password:
+                user.must_change_password = False
+                changed = True
+            if not user.active:
+                user.active = True
+                changed = True
+            if changed:
+                user.save()
+                self.stdout.write(self.style.SUCCESS(f"Updated bootstrap admin '{username}'"))
+            else:
+                self.stdout.write(f"Bootstrap admin '{username}' already exists")
 
         self.stdout.write(self.style.SUCCESS("Seed complete"))

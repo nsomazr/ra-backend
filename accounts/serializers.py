@@ -32,12 +32,17 @@ class UserWriteSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         password = validated_data.pop("password", None) or User.objects.make_random_password()
+        role = validated_data.get("role")
+        if role == User.Role.ADMIN:
+            validated_data.setdefault("is_staff", True)
         return User.objects.create_user(password=password, **validated_data)
 
     def update(self, instance, validated_data):
         password = validated_data.pop("password", None)
         for key, value in validated_data.items():
             setattr(instance, key, value)
+        if instance.role == User.Role.ADMIN:
+            instance.is_staff = True
         if password:
             instance.set_password(password)
             instance.must_change_password = True
