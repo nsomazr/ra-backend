@@ -170,6 +170,7 @@ class SchoolReport(models.Model):
     findings = models.JSONField(default=list, blank=True)
     debriefs = models.JSONField(default=list, blank=True)
     history = models.JSONField(default=list, blank=True)
+    team = models.JSONField(default=dict, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     submitted_at = models.DateTimeField(null=True, blank=True)
@@ -273,4 +274,11 @@ class ProjectSettings(models.Model):
     require_triangulation = models.BooleanField(default=True)
     block_unconfirmed_roster = models.BooleanField(default=True)
     active_regions = models.JSONField(default=list, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class SyncMeta(models.Model):
+    """Singleton sync version counter for offline field clients."""
+    id = models.PositiveSmallIntegerField(primary_key=True, default=1)
+    version = models.PositiveIntegerField(default=0)
     updated_at = models.DateTimeField(auto_now=True)

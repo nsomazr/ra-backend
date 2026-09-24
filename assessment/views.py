@@ -1,6 +1,7 @@
 from django.utils import timezone
 from rest_framework import generics, permissions, status, viewsets
 from rest_framework.decorators import action
+from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -205,9 +206,13 @@ class EvidenceFileViewSet(viewsets.ModelViewSet):
     serializer_class = EvidenceFileSerializer
     lookup_field = "evidence_id"
     permission_classes = [permissions.IsAuthenticated, IsNotViewer]
+    parser_classes = [JSONParser, MultiPartParser, FormParser]
 
     def perform_create(self, serializer):
-        serializer.save(uploader=self.request.user)
+        serializer.save(uploader=self.request.user, sync_status="SYNCED")
+
+    def perform_update(self, serializer):
+        serializer.save(sync_status="SYNCED")
 
     @action(detail=True, methods=["post"])
     def detach(self, request, evidence_id=None):
