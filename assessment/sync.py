@@ -22,7 +22,7 @@ from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.permissions import IsNotViewer
+from accounts.permissions import IsAdminRole, IsNotViewer
 
 from .models import (
     ConsentRecord,
@@ -225,9 +225,10 @@ def build_server_snapshot() -> dict:
         },
     }
     return {
-        "schemaVersion": 5,
+        "schemaVersion": 8,
         "project": project,
         "reports": reports,
+        "deletedReports": {},
         "programmes": programmes,
         "consents": consents,
         "settings": project["settings"],
@@ -440,6 +441,18 @@ def apply_client_snapshot(snapshot: dict) -> tuple[dict, list]:
         return build_server_snapshot(), conflicts
 
     with transaction.atomic():
+        # Apply draft deletions (tombstones) from field clients
+        for school_id, tombstone in (snapshot.get("deletedReports") or {}).items():
+            if not school_id:
+                continue
+            report = SchoolReport.objects.filter(school_id=school_id).first()
+            if not report:
+                continue
+            deleted_at = _parse_ts((tombstone or {}).get("deletedAt"))
+            report_updated = _parse_ts(report.updated_at.isoformat() if report.updated_at else "")
+            if deleted_at >= report_updated:
+                report.delete()
+
         for report in (snapshot.get("reports") or {}).values():
             if isinstance(report, dict):
                 _upsert_report(report, conflicts)
@@ -451,16 +464,41 @@ def apply_client_snapshot(snapshot: dict) -> tuple[dict, list]:
                 _upsert_consent(consent, conflicts)
         _apply_project(snapshot.get("project") or {}, snapshot.get("settings"), conflicts)
 
+        # Normalize conflicts for the field UI
+        open_conflicts = []
+        for item in conflicts:
+            record = item.get("record") or ""
+            open_conflicts.append({
+                "id": f"c-{record}-{item.get('winner', 'unknown')}",
+                "type": "report" if not str(record).startswith("programme:") and not str(record).startswith("consent:") else "record",
+                "recordId": record,
+                "record": record,
+                "summary": item.get("reason") or f"Concurrent change; kept {item.get('winner', 'server')} version",
+                "winner": item.get("winner"),
+                "reason": item.get("reason") or "",
+                "serverValue": item.get("winner") == "server" and "Server copy retained" or "",
+                "incomingValue": item.get("winner") == "incoming" and "Incoming copy applied" or "",
+                "detectedAt": timezone.now().isoformat(),
+                "status": "OPEN" if item.get("winner") == "server" else "RESOLVED",
+            })
+
         meta, _ = SyncMeta.objects.select_for_update().get_or_create(id=1)
         meta.version = int(meta.version or 0) + 1
-        meta.save(update_fields=["version", "updated_at"])
+        # Keep only still-open conflicts for Team Leader review
+        meta.open_conflicts = [c for c in open_conflicts if c.get("status") == "OPEN"]
+        meta.save(update_fields=["version", "open_conflicts", "updated_at"])
 
-    return build_server_snapshot(), conflicts
+    return build_server_snapshot(), open_conflicts
 
 
 def get_sync_version() -> int:
     meta, _ = SyncMeta.objects.get_or_create(id=1)
     return int(meta.version or 0)
+
+
+def get_open_conflicts() -> list:
+    meta, _ = SyncMeta.objects.get_or_create(id=1)
+    return list(meta.open_conflicts or [])
 
 
 class SyncPushView(APIView):
@@ -488,6 +526,7 @@ class SyncPullView(APIView):
             "ok": True,
             "serverVersion": get_sync_version(),
             "snapshot": build_server_snapshot(),
+            "conflicts": [c for c in get_open_conflicts() if c.get("status") == "OPEN"],
         })
 
     def get(self, request):
@@ -602,3 +641,163 @@ class EvidenceDownloadView(APIView):
         from django.http import FileResponse
 
         return FileResponse(ev.file.open("rb"), as_attachment=False, filename=ev.filename or "evidence.bin")
+
+
+PRESENCE_TTL_SECONDS = 90
+
+
+def _clean_presence(entries: list) -> list:
+    cutoff = timezone.now().timestamp() - PRESENCE_TTL_SECONDS
+    cleaned = []
+    for item in entries or []:
+        if not isinstance(item, dict):
+            continue
+        try:
+            seen = _parse_ts(item.get("lastSeen"))
+        except Exception:
+            seen = 0.0
+        if seen >= cutoff:
+            cleaned.append(item)
+    return cleaned[-500:]
+
+
+class SyncConflictsView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        return Response({"ok": True, "conflicts": get_open_conflicts()})
+
+
+class SyncConflictResolveView(APIView):
+    permission_classes = [permissions.IsAuthenticated, IsNotViewer]
+
+    def post(self, request):
+        conflict_id = str(request.data.get("id") or "").strip()
+        choice = str(request.data.get("choice") or "").strip()
+        actor = str(request.data.get("actor") or request.user.get_username() or "Team Leader")
+        if not conflict_id:
+            return Response({"error": "id is required"}, status=status.HTTP_400_BAD_REQUEST)
+        if choice not in ("server", "incoming"):
+            return Response({"error": "choice must be server or incoming"}, status=status.HTTP_400_BAD_REQUEST)
+
+        with transaction.atomic():
+            meta, _ = SyncMeta.objects.select_for_update().get_or_create(id=1)
+            conflicts = list(meta.open_conflicts or [])
+            index = next((i for i, c in enumerate(conflicts) if c.get("id") == conflict_id and c.get("status") == "OPEN"), -1)
+            if index < 0:
+                return Response({"error": "Conflict not found or already resolved"}, status=status.HTTP_400_BAD_REQUEST)
+            resolved = {
+                **conflicts[index],
+                "status": "RESOLVED",
+                "resolvedAt": timezone.now().isoformat(),
+                "resolvedBy": actor,
+                "resolution": choice,
+            }
+            conflicts[index] = resolved
+            meta.open_conflicts = [c for c in conflicts if c.get("status") == "OPEN"]
+            meta.version = int(meta.version or 0) + 1
+            meta.save(update_fields=["open_conflicts", "version", "updated_at"])
+
+        return Response({
+            "ok": True,
+            "serverVersion": get_sync_version(),
+            "snapshot": build_server_snapshot(),
+            "conflict": resolved,
+        })
+
+
+class PresenceView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        device_id = str(request.data.get("deviceId") or "").strip()
+        if not device_id:
+            return Response({"error": "deviceId is required"}, status=status.HTTP_400_BAD_REQUEST)
+        entry = {
+            "deviceId": device_id,
+            "userId": str(request.data.get("userId") or getattr(request.user, "pk", "") or ""),
+            "name": str(request.data.get("name") or request.user.get_username() or "Team member"),
+            "role": str(request.data.get("role") or getattr(request.user, "role", "") or ""),
+            "schoolId": str(request.data.get("schoolId") or ""),
+            "regionId": str(request.data.get("regionId") or ""),
+            "page": str(request.data.get("page") or ""),
+            "tab": str(request.data.get("tab") or ""),
+            "lastSeen": timezone.now().isoformat(),
+        }
+        with transaction.atomic():
+            meta, _ = SyncMeta.objects.select_for_update().get_or_create(id=1)
+            others = [x for x in _clean_presence(meta.presence) if x.get("deviceId") != device_id]
+            others.append(entry)
+            meta.presence = others
+            meta.save(update_fields=["presence", "updated_at"])
+        return Response({"ok": True, "lastSeen": entry["lastSeen"]})
+
+    def get(self, request):
+        school_id = str(request.query_params.get("schoolId") or "")
+        region_id = str(request.query_params.get("regionId") or "")
+        device_id = str(request.query_params.get("deviceId") or "")
+        with transaction.atomic():
+            meta, _ = SyncMeta.objects.select_for_update().get_or_create(id=1)
+            cleaned = _clean_presence(meta.presence)
+            if cleaned != (meta.presence or []):
+                meta.presence = cleaned
+                meta.save(update_fields=["presence", "updated_at"])
+        users = [
+            u for u in cleaned
+            if (not school_id or u.get("schoolId") == school_id)
+            and (not region_id or u.get("regionId") == region_id)
+            and (not device_id or u.get("deviceId") != device_id)
+        ]
+        return Response({"ok": True, "users": users})
+
+
+class AdminBackupView(APIView):
+    permission_classes = [permissions.IsAuthenticated, IsAdminRole]
+
+    def get(self, request):
+        meta, _ = SyncMeta.objects.get_or_create(id=1)
+        snapshot = build_server_snapshot()
+        payload = {
+            "format": "P10354-SERVER-BACKUP-1",
+            "createdAt": timezone.now().isoformat(),
+            "serverVersion": int(meta.version or 0),
+            "state": {
+                "version": int(meta.version or 0),
+                "updatedAt": meta.updated_at.isoformat() if meta.updated_at else timezone.now().isoformat(),
+                "snapshot": snapshot,
+            },
+            "conflicts": list(meta.open_conflicts or []),
+        }
+        return Response({"ok": True, "backup": payload})
+
+
+class AdminRestoreView(APIView):
+    permission_classes = [permissions.IsAuthenticated, IsAdminRole]
+
+    def post(self, request):
+        backup = request.data.get("backup") or request.data
+        if not isinstance(backup, dict) or backup.get("format") != "P10354-SERVER-BACKUP-1":
+            return Response({"error": "Invalid P10354 server backup file"}, status=status.HTTP_400_BAD_REQUEST)
+        state = backup.get("state") or {}
+        snapshot = state.get("snapshot")
+        if not isinstance(snapshot, dict):
+            return Response({"error": "Backup snapshot is missing"}, status=status.HTTP_400_BAD_REQUEST)
+
+        merged, _conflicts = apply_client_snapshot(snapshot)
+        with transaction.atomic():
+            meta, _ = SyncMeta.objects.select_for_update().get_or_create(id=1)
+            if isinstance(backup.get("conflicts"), list):
+                meta.open_conflicts = [c for c in backup["conflicts"] if isinstance(c, dict) and c.get("status") == "OPEN"]
+            try:
+                restored_version = int(state.get("version") or meta.version or 0)
+            except (TypeError, ValueError):
+                restored_version = int(meta.version or 0)
+            meta.version = max(restored_version, int(meta.version or 0) + 1)
+            meta.save(update_fields=["open_conflicts", "version", "updated_at"])
+
+        return Response({
+            "ok": True,
+            "serverVersion": get_sync_version(),
+            "restoredAt": timezone.now().isoformat(),
+            "snapshot": merged,
+        })

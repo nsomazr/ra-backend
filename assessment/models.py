@@ -281,4 +281,6 @@ class SyncMeta(models.Model):
     """Singleton sync version counter for offline field clients."""
     id = models.PositiveSmallIntegerField(primary_key=True, default=1)
     version = models.PositiveIntegerField(default=0)
+    open_conflicts = models.JSONField(default=list, blank=True)
+    presence = models.JSONField(default=list, blank=True)
     updated_at = models.DateTimeField(auto_now=True)

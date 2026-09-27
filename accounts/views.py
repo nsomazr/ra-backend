@@ -46,6 +46,7 @@ class ChangePasswordView(APIView):
 
 class UserListCreateView(generics.ListCreateAPIView):
     queryset = User.objects.all()
+    pagination_class = None
 
     def get_serializer_class(self):
         if self.request.method == "POST":
@@ -56,6 +57,12 @@ class UserListCreateView(generics.ListCreateAPIView):
         if self.request.method == "POST":
             return [permissions.IsAdminUser()]
         return [permissions.IsAuthenticated()]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
 
 
 class UserDetailView(generics.RetrieveUpdateAPIView):
@@ -71,6 +78,14 @@ class UserDetailView(generics.RetrieveUpdateAPIView):
         if self.request.method in ("PUT", "PATCH"):
             return [permissions.IsAdminUser()]
         return [permissions.IsAuthenticated()]
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop("partial", False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response(UserSerializer(user).data)
 
 
 class HealthView(APIView):
